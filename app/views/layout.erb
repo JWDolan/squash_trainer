@@ -6,10 +6,19 @@
    </head>
    <body>
       <nav>
-         <a href="/registrations/signup">Sign Up</a>
-         <a href="/sessions/login">Log In</a>
+         <% if logged_in? %>
+
+            <a href="/logout">Log Out</a>
+
+         <% else %>
+
+            <a href="/registrations/signup">Sign Up</a>
+            <a href="/sessions/login">Log In</a>
+
+         <% end %>
       </nav>
-      <%= yield %>
+
+         <%= yield %>
 
    </body>
 </html>

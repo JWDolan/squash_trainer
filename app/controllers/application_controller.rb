@@ -4,6 +4,7 @@ class ApplicationController < Sinatra::Base
 
    configure do
          set :views, "app/views"
+
    end
 
    get '/' do
@@ -28,9 +29,37 @@ class ApplicationController < Sinatra::Base
    end
 
    post '/sessions' do
-         @user = User.find_by(username: params[:username], password: params[:password])
-         session[:id] = @user.id
-         redirect '/'
+         @user = User.find_by(username: params[:username])
+         if @user && @user.authenticate(params[:password])
+            session[:user_id] = @user.id
+            redirect '/'
+         else
+            redirect to '/signup'
+         end
    end
 
+   get '/logout' do
+      if session[:user_id] != nil
+         session.destroy
+         redirect to '/sessions/login'
+      else
+         redirect to '/'
+      end
+   end
+
+   helpers do
+         def redirect_if_not_logged_in
+            if !logged_in?
+               redirect '/sessions/login'
+            end
+         end
+
+         def logged_in?
+            !!session[:user_id]
+         end
+
+         def current_user
+            User.find(session[:user_id])
+         end
+   end
 end
