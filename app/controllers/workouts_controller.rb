@@ -5,4 +5,13 @@ class WorkoutsController < ApplicationController
             erb :'workouts/index'
       end
 
+      get '/workouts/new' do
+         erb :'workouts/new'
+      end
+
+      post '/workouts' do
+            @workout = Workout.create(title: params[:title])
+            redirect to "/workouts"
+      end
+
 end
