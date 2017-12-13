@@ -1,7 +1,7 @@
 <h2>Workouts</h2>
 
 <% @workouts.each do |workout| %>
-   <p> <%= workout.title %> </p>
+   <h3><a href="/workouts/<%= workout.id %>"><%= workout.title %></a></h3>
 <% end %>
-
-<a href="/workouts/new">Add Workout</a>
+<br>
+<a href="/workouts/new">New Workout</a>
