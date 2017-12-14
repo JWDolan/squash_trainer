@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
    end
 
    get '/' do
-         erb :index
+         erb :home
    end
 
    get '/registrations/signup' do
@@ -32,15 +32,10 @@ class ApplicationController < Sinatra::Base
          @user = User.find_by(username: params[:username])
          if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect to '/users/home'
+            redirect to '/account'
          else
             redirect to '/signup'
          end
-   end
-
-   get '/users/home' do
-      @user = User.find_by_id(session[:user_id])
-      erb :'users/home'
    end
 
    get '/logout' do

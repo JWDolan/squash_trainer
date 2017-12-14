@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 3) do
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "name"
+    t.string "reps"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
