@@ -10,7 +10,7 @@
   <label> Which workout does this belong to? </label>
   <select name="workout_id">
     <% current_user.workouts.each do |bag| %>
-      <option value=<%=workout.id %> <%= "selected" if workout.id==@club.workout.id %> ><%= workout.title %></option>
+      <option value=<%=workout.id %> <%= "selected" if workout.id==@exercise.workout.id %> ><%= workout.title %></option>
     <% end %>
   </select>
 
