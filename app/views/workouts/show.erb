@@ -3,8 +3,13 @@
 <h2><%= @workout.title %></h2>
 
 <h3> Exercises </h3>
+<ul>
+<% @workout.exercises.each do |club| %>
+  <li><a href="/exercises/<%=exercise.id%>"><%= exercises.reps %> <%= exercise.name %></a></li>
+<% end%>
+</ul>
 
-
+<a href="/exercises/new"> Add Exercise </a>
 
 <h2><a href="/workouts/<%= @workout.id %>/edit">Edit Workout</a></h2>
 
