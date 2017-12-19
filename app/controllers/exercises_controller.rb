@@ -33,4 +33,10 @@ class ExercisesController < ApplicationController
      redirect "/workouts/<%=@exercise.workout.id%>"
    end
 
+   delete '/exercises/:id/delete' do
+      @exercise = Exercise.find_by_id(params[:id])
+      @exercise.delete
+      redirect to '/workouts'
+   end
+
 end
