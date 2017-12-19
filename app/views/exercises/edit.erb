@@ -1,0 +1,18 @@
+<h1>Edit <%= @exercise.name %></h1>
+
+<form action="/exercises/<%=@exercise.id %>" method="POST">
+  <label> Name </label>
+  <input type="text" name="name" value="<%=@exercise.name %>"> </br>
+
+  <label> Reps </label>
+  <input type="text" name="reps" value="<%=@exercise.reps%>"> </br>
+
+  <label> Which workout does this belong to? </label>
+  <select name="workout_id">
+    <% current_user.workouts.each do |bag| %>
+      <option value=<%=workout.id %> <%= "selected" if workout.id==@club.workout.id %> ><%= workout.title %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Update">
+</form>
