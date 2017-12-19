@@ -7,7 +7,7 @@
   <label>Reps</label>
   <input type="text" name="reps"> </br>
 
-  <label> Which Golf Bag does this belong in? </label>
+  <label> Which workout does this belong to? </label>
   <select name="workout_id">
     <% current_user.workouts.each do |bag| %>
       <option value=<%=workout.id %>><%= workout.title %></option>
