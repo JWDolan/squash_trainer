@@ -25,4 +25,12 @@ class ExercisesController < ApplicationController
      erb :'exercises/show'
    end
 
+   post "/exercises" do
+     unless Exercise.valid_params?(params)
+      redirect "/exercises/new?error=invalid exercise"
+     end
+     Exercise.create(params)
+     redirect "/workouts/<%=@exercise.workout.id%>"
+   end
+
 end
