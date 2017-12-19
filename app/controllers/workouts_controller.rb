@@ -11,9 +11,6 @@ class WorkoutsController < ApplicationController
       end
 
       post '/workouts' do
-         unless Workout.valid_params?(params)
-            redirect "/workouts/#{@workout.id}/edit?error=invalid workout"
-         end
          @workout = Workout.create(title: params[:title])
          redirect to "/workouts"
       end
