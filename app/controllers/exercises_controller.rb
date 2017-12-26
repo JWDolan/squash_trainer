@@ -1,17 +1,20 @@
 class ExercisesController < ApplicationController
 
    get "/exercises/new" do
+      redirect_if_not_logged_in
      @error_message = params[:error]
      erb :'exercises/new'
    end
 
    get "/exercises/:id/edit" do
+      redirect_if_not_logged_in  
      @error_message = params[:error]
      @exercise = Exercise.find(params[:id])
      erb :'exercises/edit'
    end
 
    post "/exercises/:id" do
+      redirect_if_not_logged_in
      @exercise = Exercise.find(params[:id])
      unless Exercise.valid_params?(params)
        redirect "/exercises/#{@exercise.id}/edit?error=invalid exercise"
@@ -21,11 +24,13 @@ class ExercisesController < ApplicationController
    end
 
    get "/exercises/:id" do
+      redirect_if_not_logged_in
      @exercise = Exercise.find(params[:id])
      erb :'exercises/show'
    end
 
    post "/exercises" do
+      redirect_if_not_logged_in
      unless Exercise.valid_params?(params)
       redirect "/exercises/new?error=invalid exercise"
      end
