@@ -14,7 +14,10 @@ class WorkoutsController < ApplicationController
 
       post '/workouts' do
          redirect_if_not_logged_in
-         @workout = Workout.create(title: params[:title])
+         unless Workout.valid_params?(params)
+            redirect "/workouts/new?error=invalid workout"
+         end
+         Workout.create(title: params[:title])
          redirect to "/workouts"
       end
 
