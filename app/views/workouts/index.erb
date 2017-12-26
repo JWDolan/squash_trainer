@@ -2,12 +2,11 @@
 
 <h2>Workouts</h2>
 
-<ol>
+<ul>
 <% @workouts.each do |workout| %>
    <li><a href="/workouts/<%= workout.id %>"><%= workout.title %></a></li>
 <% end %>
-</ol>
-
+</ul>
 
 
 <ul>

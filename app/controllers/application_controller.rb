@@ -4,7 +4,6 @@ class ApplicationController < Sinatra::Base
 
    configure do
          set :views, "app/views"
-
    end
 
    get '/' do
@@ -34,7 +33,7 @@ class ApplicationController < Sinatra::Base
             session[:user_id] = @user.id
             redirect to '/account'
          else
-            redirect to '/signup'
+            redirect to '/registrations/signup'
          end
    end
 
