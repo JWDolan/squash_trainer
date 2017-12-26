@@ -35,7 +35,7 @@ class ExercisesController < ApplicationController
       redirect "/exercises/new?error=invalid exercise"
      end
      Exercise.create(params)
-     redirect "/workouts/<%=@exercise.workout.id%>"
+     redirect "/workouts"
    end
 
    delete '/exercises/:id/delete' do
